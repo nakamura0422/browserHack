@@ -1,0 +1,15 @@
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack.csprojResolveAssemblyReference.cache
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\MainWindow.g.cs
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\App.g.cs
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack_MarkupCompile.cache
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack_MarkupCompile.lref
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\bin\Debug\browserHack.exe.config
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\bin\Debug\browserHack.exe
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\bin\Debug\browserHack.pdb
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\MainWindow.baml
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack.g.resources
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack.Properties.Resources.resources
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack.csproj.GenerateResource.Cache
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack.csproj.CoreCompileInputs.cache
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack.exe
+C:\Users\NG.nakamura\Desktop\browserHack\browserHack\obj\Debug\browserHack.pdb
