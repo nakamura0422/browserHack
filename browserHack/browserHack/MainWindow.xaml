@@ -30,7 +30,7 @@
             <Grid Grid.Row="0">
 
                 <Grid.ColumnDefinitions>
-                    
+
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto" />
@@ -38,18 +38,18 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto" />
+
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Content="戻る" Click="CanGoBackClick"/>
-                <TextBox Grid.Column="1" Name="url" Text="https://www.google.co.jp/"/>
-                <Button Grid.Column="2" Content="検索" Click="NavigateClick"/>
+                <Button Grid.Column="0" Content="戻る" Click="PrimaryCanGoBackClick"/>
+                <TextBox Grid.Column="1" Name="PrimaryUrl" Text="https://www.google.co.jp/"/>
+                <Button Grid.Column="2" Content="検索" Click="PrimaryNavigateClick"/>
 
-                <Button Grid.Column="3" Content="戻る" Click="CanGoBackSplitClick"/>
-                <TextBox Grid.Column="4" Name="urlSplit" Text="https://www.google.co.jp/"/>
-                <Button Grid.Column="5" Content="検索" Click="NavigateSplitClick"/>
+                <Button Grid.Column="3" Content="戻る" Click="SecondaryCanGoBackClick"/>
+                <TextBox Grid.Column="4" Name="SecondaryUrl" Text="https://www.yahoo.co.jp/"/>
+                <Button Grid.Column="5" Content="検索" Click="SecondaryNavigateClick"/>
+                
             </Grid>
-
-
 
             <Grid Grid.Row="1">
 
@@ -60,19 +60,17 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                    <WebBrowser Name="browser" Height="1024"/>
+                    <WebBrowser Name="PrimaryBrowser" Height="1024"/>
                 </StackPanel>
 
                 <!--分割線-->
                 <GridSplitter Width="10" HorizontalAlignment="Stretch" Grid.Column="1" Background="Gray"/>
 
-
                 <StackPanel Grid.Column="2">
-                    <WebBrowser Name="browserSplit" Height="1024"/>
+                    <WebBrowser Name="SecondaryBrowser" Height="1024"/>
                 </StackPanel>
 
             </Grid>
-
 
         </Grid>
     </DockPanel>
