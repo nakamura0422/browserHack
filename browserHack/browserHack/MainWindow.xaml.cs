@@ -28,13 +28,29 @@ namespace browserHack
         /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
-      
-            JavaScripteErrorBrock();
+            Action<object> errorBrock = (browser) =>
+            {
+                // JavaScripteのErrorダイアログを表示させないようにする
+                var axIWebBrowser2 = typeof(WebBrowser).GetProperty("AxIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
+                var comObj = axIWebBrowser2.GetValue(browser, null);
+            };
 
-            browser.Source = new Uri(url.Text);
-            browserSplit.Source = new Uri(url.Text);
-            
+            // メソッドを切らず、ローカル関数として定義することでprimaryより可視性を下げれる
+            Action browserInit = () =>
+            {
+                // ページを表示させておく
+                PrimaryBrowser.Source = new Uri(PrimaryUrl.Text);
+                SecondaryBrowser.Source = new Uri(SecondaryUrl.Text);
+            };
+
+            InitializeComponent();
+
+            // JavaScripteのErrorダイアログを表示させない
+            errorBrock(PrimaryBrowser);
+            errorBrock(SecondaryBrowser);
+
+            // ブラウザの初期化
+            browserInit();
         }
 
         /// <summary>
@@ -42,51 +58,39 @@ namespace browserHack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NavigateClick(object sender, RoutedEventArgs e) => browser.Source = new Uri(url.Text);
+        private void PrimaryNavigateClick(object sender, RoutedEventArgs e) => PrimaryBrowser.Source = new Uri(PrimaryUrl.Text);
 
         /// <summary>
-        /// JavaScripteのErrorダイアログを表示させないようにする
-        /// </summary>
-        private void JavaScripteErrorBrock()
-        {
-            var axIWebBrowser2 = typeof(WebBrowser).GetProperty("AxIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
-            var comObj = axIWebBrowser2.GetValue(browser, null);
-            comObj.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, comObj, new object[] { true });
-            comObj = axIWebBrowser2.GetValue(browserSplit, null);
-            comObj.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, comObj, new object[] { true });
-        }
-
-        /// <summary>
-        /// 分割したほうのNavigateをクリックしたときの挙動
+        /// SecondaryのNavigateをクリックしたときの挙動
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NavigateSplitClick(object sender, RoutedEventArgs e) => browserSplit.Source = new Uri(urlSplit.Text);
+        private void SecondaryNavigateClick(object sender, RoutedEventArgs e) => SecondaryBrowser.Source = new Uri(SecondaryUrl.Text);
 
         /// <summary>
         /// 前ページに戻るぜよ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CanGoBackClick(object sender, RoutedEventArgs e)
+        private void PrimaryCanGoBackClick(object sender, RoutedEventArgs e)
         {
             // 前ページの履歴があるか
-            if (browser.CanGoBack == true)
+            if (PrimaryBrowser.CanGoBack == true)
                 // 前ページに戻る
-                browser.GoBack();
+                PrimaryBrowser.GoBack();
         }
 
         /// <summary>
-        /// 分割したほうが前ページに戻るぜよ
+        /// Secondaryが前ページに戻るぜよ
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CanGoBackSplitClick(object sender, RoutedEventArgs e)
+        private void SecondaryCanGoBackClick(object sender, RoutedEventArgs e)
         {
             // 前ページの履歴があるか
-            if (browserSplit.CanGoBack == true)
+            if (SecondaryBrowser.CanGoBack == true)
                 // 前ページに戻る
-                browserSplit.GoBack();
+                SecondaryBrowser.GoBack();
         }
     }
 }
